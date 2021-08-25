@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { addTodoAction } from '../../actions/addTodoAction';
+import { addTodoAction } from '../../store/actions/addTodoAction';
 
 class AddTodo extends Component {
     addTodo(event) {
-        if (event.key === 'Enter') {
-            this.props.addTodo({ workName: event.target.value });
+        const workName = event.target.value;
+        console.log("workName", workName)
+        if (event.key === 'Enter' && !!workName) {
+            this.props.addTodo({ workName });
             event.target.value = null;
         }
     }

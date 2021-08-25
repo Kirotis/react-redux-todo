@@ -8,8 +8,8 @@ class TodoList extends Component {
             <div className="to-do-list">
                 <span>
                     {
-                        this.props.items.map((element, index) => {
-                            return <Todo item={element} key={index} index={index} />;
+                        this.props.items.map((element) => {
+                            return <Todo item={element} key={element.date}/>;
                         })
                     }
                 </span>

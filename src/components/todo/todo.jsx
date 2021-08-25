@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './todo.css';
-import { deleteTodoAction } from '../../actions/deleteTodoAction';
+import { deleteTodoAction } from '../../store/actions/deleteTodoAction';
 import { bindActionCreators } from 'redux';
 
 class Todo extends Component {
@@ -9,8 +9,10 @@ class Todo extends Component {
         return (
             <div className="to-do">
                 <span className="to-do-name">{this.props.item.workName}</span>
-                <span className="space"></span>
-                <button className="to-do-delete" onClick={() => this.props.deleteTodoById(this.props.index)}>Delete</button>
+                <div>
+                    <sub className="to-do-date">Created: {new Date(this.props.item.date).toLocaleString()}</sub>
+                    <button className="to-do-delete" onClick={() => this.props.deleteTodoById(this.props.item.date)}>Delete</button>
+                </div>
             </div>
         );
     }
